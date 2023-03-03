@@ -1,0 +1,148 @@
+﻿# A5:ER FORMAT:16
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.17.4 Copyright © 1997 - 2022 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=Twitter
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",7,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=7
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=12
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=5
+RDBMSTypeName=MySQL
+CommonField="作成日時","created_at","@DATETIME","NOT NULL",,"current_timestamp","",$FFFFFFFF
+CommonField="更新日時","updated_at","@DATETIME","NOT NULL",,"on update current_timestamp","",$FFFFFFFF
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=1
+BugFixEntityWidth=1
+
+[Entity]
+PName=users
+LName=ユーザー
+Comment=
+TableOption=
+Page=Main
+Left=500
+Top=200
+Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$000028FF,""
+Field="ユーザー名","user_name","@VARCHAR(50)","NOT NULL",,"","",$FFFFFFFF,""
+Field="アイコン","icon","BLOB","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230303152927
+Position="Main",500,200
+ZOrder=2
+
+[Entity]
+PName=profiles
+LName=プロフィール
+Comment=
+TableOption=
+Page=Main
+Left=450
+Top=950
+Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$0079009A,""
+Field="プロフィール画像","profile_image","BLOB",,,"","",$FFFFFFFF,""
+Field="Webサイト","website","TEXT",,,"","",$FFFFFFFF,""
+Field="生年月日","birthday","@DATETIME","NOT NULL",,"","",$FFFFFFFF,""
+Field="自己紹介","introduction","@VARCHAR(150)",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230303153620
+Position="Main",450,950
+ZOrder=3
+
+[Relation]
+Entity1=users
+Entity2=profiles
+RelationType1=2
+RelationType2=2
+Fields1=user_id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1503,8497,1789,R,R,""
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20230303153539
+LineMode=0
+Bar1=150
+Bar2=850
+Bar3=179
+TermPos1=R
+TermPos2=R
+ZOrder=4
+
+[Entity]
+PName=tweets
+LName=ツイート
+Comment=
+TableOption=
+Page=Main
+Left=1900
+Top=200
+Field="ユーザーID","user_id","@INT","NOT NULL",0,"","",$000028FF,""
+Field="文章","text","@VARCHAR(140)",,,"","",$FFFFFFFF,""
+Field="画像","image","BLOB",,,"","",$FFFFFFFF,""
+Field="動画","video","TEXT",,,"","",$FFFFFFFF,""
+Field="いいね数","good_count","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="表示回数","view_count\n","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="引用数","quote_count","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="リツイート数","retweet_count","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="is_reply","is_reply","@BOOLEAN","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20230303160117
+Position="Main",1900,200
+ZOrder=5
+
+[Relation]
+Entity1=users
+Entity2=tweets
+RelationType1=2
+RelationType2=3
+Fields1=user_id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1199,8801,797,R,R,""
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20230303155703
+LineMode=0
+Bar1=120
+Bar2=880
+Bar3=80
+TermPos1=R
+TermPos2=R
+ZOrder=6
